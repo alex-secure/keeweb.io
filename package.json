@@ -1,0 +1,33 @@
+{
+    "name": "keeweb.io",
+    "description": "KeePass webinterface written in NodeJS",
+    "keywords": [
+        "keepass",
+        "database",
+        "password",
+        "reader",
+        "kdb",
+        "kdb4",
+        "kdbx",
+        "password",
+        "safe",
+        "manager",
+        "secure",
+        "web",
+        "interface",
+        "panel",
+        "convenient"
+    ],
+    "version": "0.1.0",
+    "author": "Pascal Mathis <dev@snapserv.net> (https://www.snapserv.net)",
+    "private": true,
+    "scripts": {
+        "start": "node app"
+    },
+    "dependencies": {
+        "colors": "*",
+        "dateformat": "*",
+        "restify": "2.3.x",
+        "keepass.io": ">=0.2.6"
+    }
+}
