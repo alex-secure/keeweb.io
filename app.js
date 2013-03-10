@@ -23,7 +23,9 @@ App.log.info('Starting up keeweb.io...');
 
 // Initialize sessions
 App.log.debug('Initializing sessions');
-App.session = new App._.session.Memory();
+App.session = new App._.session.Memory(60 * 60 * 1000); // Session lifetime: 1 hour
+App.session.setLogger(App.log.clone('keewebio.Session'));
+setInterval(App.session.clean.bind(App.session), 10000);
 
 // Create a new REST server instance
 App.log.debug('Creating REST server instance');
@@ -38,11 +40,11 @@ App.rest = new App._.server.Restify({
 });
 
 // REST authentication methods
-App.rest.authentication.check = function(sid) {
-    return App.session.checkSID(sid);
+App.rest.authentication.check = function(username, password) {
+    return App.session.checkSID(password);
 };
-App.rest.authentication.get = function(sid) {
-    return App.session.getBySID(sid);
+App.rest.authentication.get = function(username, password) {
+    return App.session.load(password);
 };
 
 // Implement routes

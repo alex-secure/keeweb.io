@@ -8,7 +8,9 @@ var path = require('path');
  * @type {Array}
  */
 var ACTIVE_ROUTES = [
-    'Login'
+    'Authentication',
+    'Groups',
+    'Entries'
 ];
 
 /**
